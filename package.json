@@ -1,0 +1,21 @@
+{
+  "name": "portfolio_03",
+  "version": "1.0.0",
+  "description": "Personal portfolio — confident, sharp, warm",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.7.0"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.5.0",
+      "onFail": "download"
+    }
+  }
+}

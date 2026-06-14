@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Projects from "../components/Projects.astro";
+import About from "../components/About.astro";
+import Achievements from "../components/Achievements.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="Hal Raggað — Software Engineer, AI Expert, UI/UX Designer">
+  <Nav />
+  <main id="main">
+    <Hero />
+    <div class="reveal-wrapper">
+      <Projects />
+    </div>
+    <div class="reveal-wrapper">
+      <About />
+    </div>
+    <div class="reveal-wrapper">
+      <Achievements />
+    </div>
+    <div class="reveal-wrapper">
+      <Contact />
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  const revealWrappers = document.querySelectorAll(".reveal-wrapper");
+
+  if (revealWrappers.length) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { rootMargin: "0px 0px -80px 0px" }
+    );
+
+    revealWrappers.forEach((wrapper) => {
+      wrapper.classList.add("reveal");
+      observer.observe(wrapper);
+    });
+  }
+</script>

@@ -1,0 +1,91 @@
+---
+
+---
+
+<section id="contact" class="section contact">
+  <div class="contact-inner">
+    <div class="section-header">
+      <span class="section-label">Get in touch</span>
+      <h2 class="section-title">Contact</h2>
+      <p class="section-desc">
+        I'm always open to interesting work, collaboration, or a conversation.
+        Reach out anytime.
+      </p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:hello@halragad.dev" class="contact-link">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M3 5a1 1 0 011-1h12a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="contact-label">Email</span>
+        <span class="contact-value">hello@halragad.dev</span>
+      </a>
+      <a href="https://github.com/halraggad" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M10 1.5a8.5 8.5 0 00-2.687 16.563c.425.078.58-.185.58-.41v-1.444c-2.36.513-2.86-1.136-2.86-1.136-.386-.98-.943-1.241-.943-1.241-.77-.527.058-.516.058-.516.852.06 1.3.875 1.3.875.757 1.298 1.987.923 2.472.706.077-.549.296-.923.539-1.136-1.887-.215-3.87-.944-3.87-4.2 0-.928.332-1.687.875-2.28-.088-.215-.38-1.08.083-2.25 0 0 .714-.228 2.34.872A8.15 8.15 0 0110 5.465c.724.004 1.452.098 2.132.287 1.626-1.1 2.34-.872 2.34-.872.463 1.17.171 2.035.083 2.25.543.593.875 1.352.875 2.28 0 3.262-1.985 3.982-3.876 4.193.304.262.576.78.576 1.573v2.338c0 .227.155.49.586.409A8.5 8.5 0 0010 1.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="contact-label">GitHub</span>
+        <span class="contact-value">@halraggad</span>
+      </a>
+      <a href="https://linkedin.com/in/halraggad" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M4 7h3v9H4V7zM5.5 5.5A1.5 1.5 0 105.5 3a1.5 1.5 0 000 3zM9 7h3v1.5A3 3 0 0118 12v4h-3v-3.5a1.5 1.5 0 00-3 0V16H9V7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-value">/in/halraggad</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 var(--space-xl);
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 32rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background: var(--surface);
+    border: 1px solid oklch(1 0 0 / 0.04);
+    border-radius: 8px;
+    color: var(--ink);
+    transition: border-color 0.3s var(--ease-out-quart), box-shadow 0.3s var(--ease-out-quart);
+  }
+
+  .contact-link:hover {
+    border-color: var(--primary-dim);
+    box-shadow: 0 0 16px var(--primary-glow);
+    color: var(--ink);
+  }
+
+  .contact-link svg {
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+
+  .contact-label {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--muted);
+    min-width: 4rem;
+  }
+
+  .contact-value {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--ink);
+  }
+</style>

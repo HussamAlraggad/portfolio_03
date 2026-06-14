@@ -1,0 +1,147 @@
+---
+interface Achievement {
+  title: string;
+  issuer: string;
+  year: string;
+  type: "certificate" | "honor" | "award";
+}
+
+const achievements: Achievement[] = [
+  {
+    title: "Outstanding Achievement Award",
+    issuer: "Organization Name",
+    year: "2025",
+    type: "award",
+  },
+  {
+    title: "AI / Machine Learning Certification",
+    issuer: "Credentialing Body",
+    year: "2024",
+    type: "certificate",
+  },
+  {
+    title: "Front-End Development Honors",
+    issuer: "Institution Name",
+    year: "2024",
+    type: "honor",
+  },
+  {
+    title: "Innovation in Technology Award",
+    issuer: "Tech Conference",
+    year: "2023",
+    type: "award",
+  },
+];
+---
+
+<section id="achievements" class="section achievements">
+  <div class="achievements-inner">
+    <div class="section-header">
+      <span class="section-label">Recognition</span>
+      <h2 class="section-title">Achievements</h2>
+      <p class="section-desc">
+        Certifications, awards, and honors that reflect a commitment to growth and craft.
+      </p>
+    </div>
+    <div class="achievements-list" role="list">
+      {achievements.map((item) => (
+        <div class="achievement-item" role="listitem">
+          <div class="achievement-marker" aria-hidden="true">
+            <span class="achievement-dot"></span>
+          </div>
+          <div class="achievement-body">
+            <div class="achievement-meta">
+              <span class="achievement-type">{item.type}</span>
+              <span class="achievement-year">{item.year}</span>
+            </div>
+            <h3 class="achievement-title">{item.title}</h3>
+            <p class="achievement-issuer">{item.issuer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .achievements {
+    background: var(--surface);
+  }
+
+  .achievements-inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 var(--space-xl);
+  }
+
+  .achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 48rem;
+  }
+
+  .achievement-item {
+    display: flex;
+    gap: var(--space-lg);
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid oklch(1 0 0 / 0.04);
+  }
+
+  .achievement-item:last-child {
+    border-bottom: none;
+  }
+
+  .achievement-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.375rem;
+  }
+
+  .achievement-dot {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary);
+  }
+
+  .achievement-body {
+    flex: 1;
+  }
+
+  .achievement-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xs);
+  }
+
+  .achievement-type {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: capitalize;
+    letter-spacing: 0.04em;
+  }
+
+  .achievement-year {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--muted);
+  }
+
+  .achievement-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.125rem;
+  }
+
+  .achievement-issuer {
+    font-size: var(--text-sm);
+    color: var(--ink-subtle);
+  }
+</style>

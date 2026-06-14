@@ -1,0 +1,159 @@
+---
+interface Project {
+  title: string;
+  year: string;
+  description: string;
+  outcome: string;
+  tags?: string[];
+}
+
+const projects: Project[] = [
+  {
+    title: "Project Name",
+    year: "2026",
+    description: "A brief description of the project — what it does and why it was built.",
+    outcome: "Served X users, reduced Y by Z%",
+    tags: ["React", "Python", "AI"],
+  },
+  {
+    title: "Another Project",
+    year: "2025",
+    description: "A full-stack application that solves a specific problem with a clean interface.",
+    outcome: "Open source with 500+ stars",
+    tags: ["TypeScript", "Node", "Postgres"],
+  },
+  {
+    title: "Design System",
+    year: "2025",
+    description: "A component library and design token system built for consistency at scale.",
+    outcome: "Adopted across 3 products",
+    tags: ["React", "CSS", "Storybook"],
+  },
+];
+---
+
+<section id="work" class="section projects">
+  <div class="projects-inner">
+    <div class="section-header">
+      <span class="section-label">Selected work</span>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-desc">
+        Things I've built — from web apps and AI tools to design systems and interfaces.
+      </p>
+    </div>
+    <div class="projects-grid">
+      {projects.map((project, i) => (
+        <article class="project-card">
+          <div class="card-top">
+            <span class="card-year">{project.year}</span>
+            <span class="card-accent" aria-hidden="true"></span>
+          </div>
+          <h3 class="card-title">{project.title}</h3>
+          <p class="card-desc">{project.description}</p>
+          <p class="card-outcome">{project.outcome}</p>
+          {project.tags && (
+            <ul class="card-tags" role="list" aria-label="Technologies used">
+              {project.tags.map((tag) => (
+                <li class="card-tag">{tag}</li>
+              ))}
+            </ul>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects {
+    background: var(--surface);
+  }
+
+  .projects-inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 var(--space-xl);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: var(--space-xl);
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-xl);
+    background: var(--bg);
+    border: 1px solid oklch(1 0 0 / 0.04);
+    border-radius: 8px;
+    transition: border-color 0.3s var(--ease-out-quart), box-shadow 0.3s var(--ease-out-quart);
+  }
+
+  .project-card:hover {
+    border-color: var(--primary-dim);
+    box-shadow: 0 0 20px var(--primary-glow);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-sm);
+  }
+
+  .card-year {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--muted);
+  }
+
+  .card-accent {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .card-desc {
+    font-size: var(--text-sm);
+    color: var(--ink-subtle);
+    line-height: 1.65;
+  }
+
+  .card-outcome {
+    font-size: var(--text-sm);
+    color: var(--accent);
+    font-weight: 500;
+    margin-top: auto;
+    padding-top: var(--space-md);
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    list-style: none;
+  }
+
+  .card-tag {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--muted);
+    background: oklch(1 0 0 / 0.04);
+    padding: 0.1875rem 0.5rem;
+    border-radius: 4px;
+  }
+</style>
