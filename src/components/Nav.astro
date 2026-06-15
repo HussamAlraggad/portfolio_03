@@ -10,7 +10,10 @@ const links = [
 <nav class="nav" aria-label="Primary">
   <div class="nav-inner">
     <a href="#" class="nav-logo" aria-label="Home">
-      <span class="nav-marker" aria-hidden="true"></span>
+      <picture>
+        <source srcset="/logo.png" media="(prefers-color-scheme: light)" />
+        <img src="/logo-white.png" alt="Hussam Alraggad" class="nav-logo-img" />
+      </picture>
     </a>
     <ul class="nav-links" role="list">
       {links.map((link) => (
@@ -52,10 +55,10 @@ const links = [
     left: 0;
     right: 0;
     z-index: var(--z-sticky);
-    background: oklch(0.08 0 0 / 0.85);
+    background: var(--nav-bg);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid oklch(1 0 0 / 0.04);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .nav-inner {
@@ -74,13 +77,11 @@ const links = [
     color: var(--ink);
   }
 
-  .nav-marker {
+  .nav-logo-img {
     display: block;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-    background: var(--primary);
-    box-shadow: 0 0 12px var(--primary-glow), 0 0 24px var(--primary-glow);
+    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
   }
 
   .nav-links {
@@ -97,6 +98,7 @@ const links = [
     color: var(--muted);
     transition: color 0.2s var(--ease-out-quart);
     letter-spacing: 0.02em;
+    padding: var(--space-xs) 0;
   }
 
   .nav-link:hover {
@@ -105,5 +107,15 @@ const links = [
 
   .nav-link.active {
     color: var(--primary);
+  }
+
+  @media (max-width: 640px) {
+    .nav-links {
+      gap: var(--space-md);
+    }
+
+    .nav-link {
+      padding: var(--space-sm);
+    }
   }
 </style>
