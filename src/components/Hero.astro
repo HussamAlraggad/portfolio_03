@@ -6,21 +6,20 @@
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-content">
     <span class="hero-greeting">Hi, I'm</span>
-    <h1 class="hero-name">Hal Raggað</h1>
+    <h1 class="hero-name">Hussam Alraggad</h1>
     <p class="hero-role">
-      Software Engineer <span class="hero-sep" aria-hidden="true">·</span> AI Expert
+      Software Engineer <span class="hero-sep" aria-hidden="true">·</span> AI Researcher
       <span class="hero-sep" aria-hidden="true">·</span> UI/UX Designer
     </p>
     <p class="hero-tagline">
-      I build precise interfaces and intelligent systems
+      Researching the intersection of AI and software engineering
       <br />
-      where craft meets capability.
+      while building the interfaces of tomorrow.
     </p>
   </div>
   <a href="#work" class="hero-scroll" aria-label="Scroll to work">
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="M10 3v14M5 12l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
+    <span class="hero-scroll-line" aria-hidden="true"></span>
+    <span class="hero-scroll-label">Scroll</span>
   </a>
 </section>
 
@@ -41,8 +40,9 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 80% 60% at 50% 40%, var(--primary-glow) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 40% at 70% 60%, oklch(0.7 0.14 70 / 0.04) 0%, transparent 60%);
+      radial-gradient(ellipse 70% 55% at 50% 40%, oklch(0.62 0.18 294 / 0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 45% at 30% 55%, oklch(0.7 0.14 70 / 0.08) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 70% 55%, oklch(0.7 0.14 70 / 0.06) 0%, transparent 60%);
     pointer-events: none;
   }
 
@@ -99,19 +99,38 @@
   .hero-scroll {
     position: absolute;
     bottom: var(--space-3xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    text-decoration: none;
     color: var(--muted);
-    transition: color 0.2s var(--ease-out-quart), transform 0.2s var(--ease-out-quart);
-    animation: float 3s var(--ease-out-quart) infinite;
+    transition: color 0.2s var(--ease-out-quart);
   }
 
   .hero-scroll:hover {
     color: var(--ink);
-    transform: translateY(2px);
   }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
+  .hero-scroll-line {
+    display: block;
+    width: 1px;
+    height: 32px;
+    background: currentColor;
+    animation: scrollPulse 2.5s var(--ease-out-quart) infinite;
+  }
+
+  .hero-scroll-label {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+    50% { opacity: 1; transform: scaleY(1); }
   }
 
   @media (max-width: 640px) {
@@ -130,5 +149,5 @@
     .hero-tagline br {
       display: none;
     }
-  }
+
 </style>

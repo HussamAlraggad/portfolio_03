@@ -8,26 +8,68 @@ interface Achievement {
 
 const achievements: Achievement[] = [
   {
-    title: "Outstanding Achievement Award",
-    issuer: "Organization Name",
+    title: "Master's Degree in Software Engineering",
+    issuer: "The Hashemite University",
     year: "2025",
     type: "award",
   },
   {
-    title: "AI / Machine Learning Certification",
-    issuer: "Credentialing Body",
+    title: "42 Amman Common Core",
+    issuer: "42 Amman",
+    year: "2025",
+    type: "certificate",
+  },
+  {
+    title: "42 Asia Hackathon Participant",
+    issuer: "42 Asia",
+    year: "2025",
+    type: "honor",
+  },
+  {
+    title: "MENA Devs Hackathon",
+    issuer: "42 Amman",
+    year: "2025",
+    type: "honor",
+  },
+  {
+    title: "42 Amman Piscine",
+    issuer: "42 Amman",
+    year: "2025",
+    type: "certificate",
+  },
+  {
+    title: "Flutter Development Piscine",
+    issuer: "42 Amman",
     year: "2024",
     type: "certificate",
   },
   {
-    title: "Front-End Development Honors",
-    issuer: "Institution Name",
+    title: "Introduction to Programming Using JavaScript",
+    issuer: "Certification",
     year: "2024",
-    type: "honor",
+    type: "certificate",
   },
   {
-    title: "Innovation in Technology Award",
-    issuer: "Tech Conference",
+    title: "Fundamentals of Programming in C",
+    issuer: "Certification",
+    year: "2024",
+    type: "certificate",
+  },
+  {
+    title: "Introduction to Packet Tracer",
+    issuer: "Cisco Networking Academy",
+    year: "2024",
+    type: "certificate",
+  },
+  {
+    title: "UI/UX Design Trainee",
+    issuer: "ASAC — Abdul Aziz Al Ghurair School of Advanced Computing",
+    year: "2024",
+    type: "certificate",
+  },
+  {
+    title: "Bachelor's Degree in Software Engineering",
+    issuer: "The Hashemite University",
     year: "2023",
     type: "award",
   },
@@ -36,16 +78,15 @@ const achievements: Achievement[] = [
 
 <section id="achievements" class="section achievements">
   <div class="achievements-inner">
-    <div class="section-header">
-      <span class="section-label">Recognition</span>
-      <h2 class="section-title">Achievements</h2>
+      <div class="section-header">
+        <h2 class="section-title">Achievements</h2>
       <p class="section-desc">
         Certifications, awards, and honors that reflect a commitment to growth and craft.
       </p>
     </div>
     <div class="achievements-list" role="list">
-      {achievements.map((item) => (
-        <div class="achievement-item" role="listitem">
+      {achievements.map((item, i) => (
+        <div class="achievement-item" role="listitem" style="transition-delay: {i * 0.06}s">
           <div class="achievement-marker" aria-hidden="true">
             <span class="achievement-dot"></span>
           </div>
@@ -79,13 +120,24 @@ const achievements: Achievement[] = [
     flex-direction: column;
     gap: 0;
     max-width: 48rem;
+    position: relative;
+  }
+
+  .achievements-list::before {
+    content: "";
+    position: absolute;
+    left: 3.5px;
+    top: 0.75rem;
+    bottom: 0.75rem;
+    width: 1px;
+    background: var(--primary-dim);
   }
 
   .achievement-item {
     display: flex;
     gap: var(--space-lg);
     padding: var(--space-lg) 0;
-    border-bottom: 1px solid oklch(1 0 0 / 0.04);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .achievement-item:last-child {
