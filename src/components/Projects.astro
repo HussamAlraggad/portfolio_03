@@ -5,64 +5,55 @@ interface Project {
   description: string;
   outcome: string;
   tags?: string[];
+  url?: string;
 }
 
 const projects: Project[] = [
   {
-    title: "mini_wiki_2.0",
+    title: "Mini Wiki",
     year: "2026",
-    description: "An intelligent co-researcher built in Go — an AI-powered research assistant that helps explore and synthesize information efficiently.",
+    description: "An intelligent co-researcher built in Go, an AI-powered research assistant that helps explore and synthesize information efficiently.",
     outcome: "Go-based AI research tool",
     tags: ["Go", "AI", "Research"],
+    url: "https://github.com/HussamAlraggad/mini_wiki_2.0",
   },
   {
-    title: "mini_wiki_3.0",
-    year: "2026",
-    description: "The next iteration of the intelligent co-researcher — evolved with improved architecture and deeper research capabilities. The evolved version of mini_wiki_2.0.",
-    outcome: "1 star · Go AI research tool v2",
-    tags: ["Go", "AI", "Research"],
-  },
-  {
-    title: "fashion_store_v1",
+    title: "Fashion Store",
     year: "2026",
     description: "A luxury fur fashion e-commerce prototype built with Next.js 14, TypeScript, and Tailwind CSS. Features age-gated entry, 30 products across 6 categories, multi-step checkout, admin dashboard, and a complete luxury design system.",
     outcome: "Full e-commerce prototype with admin panel",
     tags: ["Next.js", "TypeScript", "Tailwind", "E-Commerce"],
+    url: "https://maison-furrure.netlify.app/",
   },
   {
-    title: "os_geeks_hub_02",
+    title: "OS Geeks Hub",
     year: "2026",
-    description: "An OS recommendation and discovery hub — helps tech enthusiasts find the right operating system by providing curated information, documentation links, and download sources. Built with Astro.",
+    description: "An OS recommendation and discovery hub that helps tech enthusiasts find the right operating system by providing curated information, documentation links, and download sources. Built with Astro.",
     outcome: "Live at os-geeks-hub.netlify.app",
     tags: ["Astro", "TypeScript", "Docs"],
+    url: "https://os-geeks-hub.netlify.app",
   },
   {
-    title: "school_lms_template",
+    title: "School LMS Template",
     year: "2026",
     description: "A bilingual (Arabic/English) school LMS platform. Features homework management, interactive quizzes, educational materials, news/announcements, and exam schedules. Built with Next.js 16, PocketBase, and TanStack Query.",
     outcome: "Full bilingual LMS platform",
     tags: ["Next.js", "PocketBase", "TypeScript", "Education"],
   },
   {
-    title: "Glassdoor RAG Pipeline",
+    title: "RAG System",
     year: "2026",
     description: "An AI-powered Software Requirements Engineering pipeline. Ingests ~10M Glassdoor reviews via FAISS vector search, then uses LangChain + LLaMA 3 to generate complete IEEE 830 SRS documents. CUDA-accelerated embedding and retrieval.",
     outcome: "Generates structured SRS from raw review data",
     tags: ["Python", "LangChain", "FAISS", "LLM", "CUDA"],
   },
   {
-    title: "fruit_basket_3",
+    title: "Fruit Basket",
     year: "2026",
-    description: "A JavaScript web application deployed on GitHub Pages.",
-    outcome: "Live on GitHub Pages",
-    tags: ["JavaScript", "HTML", "CSS"],
-  },
-  {
-    title: "42AmmanJourney",
-    year: "2025–2026",
-    description: "A collection of C programming projects from the 42 Amman curriculum — including Libft, Printf, and other systems-level implementations from the Piscine and Common Core.",
-    outcome: "1 star · 42 curriculum projects",
-    tags: ["C", "Systems", "Algorithms"],
+    description: "An interactive game for special needs kids that uses webcam-based movement detection to help them move, play, and feel alive. Built with HTML, CSS, JavaScript, and the MediaPipe library.",
+    outcome: "Movement therapy through play",
+    tags: ["JavaScript", "HTML", "CSS", "MediaPipe"],
+    url: "https://hussamalraggad.github.io/fruit_basket_3/",
   },
 ];
 ---
@@ -73,28 +64,34 @@ const projects: Project[] = [
       <span class="section-label">Selected work</span>
       <h2 class="section-title">Projects</h2>
       <p class="section-desc">
-        Open-source projects — from AI research tools and LLM pipelines to full-stack apps and systems programming.
+        Open-source projects, from AI research tools and LLM pipelines to full-stack apps and systems programming.
       </p>
     </div>
     <div class="projects-grid">
-      {projects.map((project, i) => (
-        <article class="project-card" style="transition-delay: {i * 0.08}s">
-          <div class="card-top">
-            <span class="card-year">{project.year}</span>
-            <span class="card-accent" aria-hidden="true"></span>
-          </div>
-          <h3 class="card-title">{project.title}</h3>
-          <p class="card-desc">{project.description}</p>
-          <p class="card-outcome">{project.outcome}</p>
-          {project.tags && (
-            <ul class="card-tags" role="list" aria-label="Technologies used">
-              {project.tags.map((tag) => (
-                <li class="card-tag">{tag}</li>
-              ))}
-            </ul>
-          )}
-        </article>
-      ))}
+      {projects.map((project, i) => {
+        const Tag = project.url ? "a" : "article";
+        const attrs = project.url
+          ? { href: project.url, target: "_blank", rel: "noopener noreferrer", "aria-label": `View ${project.title}` }
+          : {};
+        return (
+          <Tag class="project-card" style={`transition-delay: ${i * 0.08}s`} {...attrs}>
+            <div class="card-top">
+              <span class="card-year">{project.year}</span>
+              <span class="card-accent" aria-hidden="true"></span>
+            </div>
+            <h3 class="card-title">{project.title}</h3>
+            <p class="card-desc">{project.description}</p>
+            <p class="card-outcome">{project.outcome}</p>
+            {project.tags && (
+              <ul class="card-tags" role="list" aria-label="Technologies used">
+                {project.tags.map((tag) => (
+                  <li class="card-tag">{tag}</li>
+                ))}
+              </ul>
+            )}
+          </Tag>
+        );
+      })}
     </div>
   </div>
 </section>
@@ -125,9 +122,15 @@ const projects: Project[] = [
     border: 1px solid var(--border-subtle);
     border-radius: 8px;
     transition: border-color 0.3s var(--ease-out-quart), box-shadow 0.3s var(--ease-out-quart), transform 0.3s var(--ease-out-quart);
+    color: inherit;
+    text-decoration: none;
   }
 
-  .project-card:hover {
+  a.project-card {
+    cursor: pointer;
+  }
+
+  a.project-card:hover {
     border-color: var(--primary-dim);
     box-shadow: 0 0 20px var(--primary-glow);
     transform: translateY(-4px);
