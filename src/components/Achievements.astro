@@ -4,6 +4,8 @@ interface Achievement {
   issuer: string;
   year: string;
   type: "certificate" | "honor" | "award";
+  placement?: string;
+  description?: string;
 }
 
 const achievements: Achievement[] = [
@@ -20,16 +22,20 @@ const achievements: Achievement[] = [
     type: "certificate",
   },
   {
-    title: "42 Asia Hackathon Participant",
+    title: "42 Asia Hackathon",
     issuer: "42 Asia",
     year: "2025",
-    type: "honor",
+    type: "award",
+    placement: "2nd Place",
+    description: "Ranked second across all 42 campuses in Asia",
   },
   {
     title: "MENA Devs Hackathon",
     issuer: "42 Amman",
     year: "2025",
-    type: "honor",
+    type: "award",
+    placement: "1st Place",
+    description: "First place among teams across the MENA region",
   },
   {
     title: "42 Amman Piscine",
@@ -78,15 +84,19 @@ const achievements: Achievement[] = [
 
 <section id="achievements" class="section achievements">
   <div class="achievements-inner">
-      <div class="section-header">
-        <h2 class="section-title">Achievements</h2>
+    <div class="section-header">
+      <h2 class="section-title">Achievements</h2>
       <p class="section-desc">
         Certifications, awards, and honors that reflect a commitment to growth and craft.
       </p>
     </div>
     <div class="achievements-list" role="list">
       {achievements.map((item, i) => (
-        <div class="achievement-item" role="listitem" style="transition-delay: {i * 0.06}s">
+        <div
+          class={`achievement-item${item.placement ? " achievement-item--highlight" : ""}`}
+          role="listitem"
+          style="transition-delay: {i * 0.06}s"
+        >
           <div class="achievement-marker" aria-hidden="true">
             <span class="achievement-dot"></span>
           </div>
@@ -94,9 +104,11 @@ const achievements: Achievement[] = [
             <div class="achievement-meta">
               <span class="achievement-type">{item.type}</span>
               <span class="achievement-year">{item.year}</span>
+              {item.placement && <span class="achievement-placement">{item.placement}</span>}
             </div>
             <h3 class="achievement-title">{item.title}</h3>
             <p class="achievement-issuer">{item.issuer}</p>
+            {item.description && <p class="achievement-desc">{item.description}</p>}
           </div>
         </div>
       ))}
@@ -138,10 +150,27 @@ const achievements: Achievement[] = [
     gap: var(--space-lg);
     padding: var(--space-lg) 0;
     border-bottom: 1px solid var(--border-subtle);
+    transition: background 0.3s var(--ease-out-quart);
+    border-radius: 6px;
+    margin: 0 calc(-1 * var(--space-md));
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
   }
 
   .achievement-item:last-child {
     border-bottom: none;
+  }
+
+  .achievement-item--highlight {
+    background: var(--primary-dim);
+    margin: var(--space-xs) calc(-1 * var(--space-md));
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-lg);
+    border-bottom-color: transparent;
+  }
+
+  .achievement-item--highlight + .achievement-item {
+    border-top: 1px solid var(--border-subtle);
   }
 
   .achievement-marker {
@@ -159,6 +188,12 @@ const achievements: Achievement[] = [
     background: var(--primary);
   }
 
+  .achievement-item--highlight .achievement-dot {
+    box-shadow: 0 0 8px var(--primary-glow);
+    width: 10px;
+    height: 10px;
+  }
+
   .achievement-body {
     flex: 1;
   }
@@ -168,6 +203,7 @@ const achievements: Achievement[] = [
     align-items: center;
     gap: var(--space-sm);
     margin-bottom: var(--space-xs);
+    flex-wrap: wrap;
   }
 
   .achievement-type {
@@ -184,6 +220,23 @@ const achievements: Achievement[] = [
     color: var(--muted);
   }
 
+  .achievement-placement {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--accent);
+    padding: 0.125rem 0.5rem;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .achievement-item--highlight .achievement-placement {
+    background: var(--primary);
+    color: var(--bg);
+  }
+
   .achievement-title {
     font-family: var(--font-display);
     font-size: var(--text-lg);
@@ -195,5 +248,12 @@ const achievements: Achievement[] = [
   .achievement-issuer {
     font-size: var(--text-sm);
     color: var(--ink-subtle);
+  }
+
+  .achievement-desc {
+    font-size: var(--text-sm);
+    color: var(--ink);
+    font-weight: 500;
+    margin-top: var(--space-xs);
   }
 </style>
