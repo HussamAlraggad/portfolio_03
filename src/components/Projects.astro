@@ -6,24 +6,48 @@ interface Project {
   outcome: string;
   tags?: string[];
   url?: string;
+  archived?: boolean;
 }
 
 const projects: Project[] = [
   {
+    title: "PMS Project Management System",
+    year: "2026",
+    description: "A passive project management system that eliminates manual task logging. Commits with task IDs auto-update Kanban boards via GitHub webhook + IDE plugin. Built with Next.js 14, Go microservices, PostgreSQL, WebSockets, and VS Code/IntelliJ plugins.",
+    outcome: "Full PM system with IDE plugins + real-time Kanban",
+    tags: ["Go", "Next.js", "TypeScript", "PostgreSQL", "WebSockets", "IDE Plugin"],
+    url: "https://github.com/HussamAlraggad/pms_project_management_system_01",
+  },
+  {
     title: "Mini Wiki",
     year: "2026",
-    description: "An intelligent co-researcher built in Go, an AI-powered research assistant that helps explore and synthesize information efficiently.",
-    outcome: "Go-based AI research tool",
-    tags: ["Go", "AI", "Research"],
+    description: "An intelligent co-researcher built in Go (v2.0). v3.0 evolves into a terminal-based AI research TUI running locally with Ollama — no cloud, no API keys, no data leaving your machine.",
+    outcome: "Go-based AI research tool + local TUI",
+    tags: ["Go", "AI", "Research", "TUI"],
     url: "https://github.com/HussamAlraggad/mini_wiki_2.0",
+  },
+  {
+    title: "Men's Fashion E-Commerce",
+    year: "2026",
+    description: "A full-stack men's fashion e-commerce platform with AI-powered virtual try-on. Monorepo architecture with Next.js 15, Medusa v2, PostgreSQL, Prisma, BullMQ, Meilisearch, Stripe, and Cloudinary. Includes customer web, admin dashboard, and Medusa backend.",
+    outcome: "Full monorepo: web, admin, API with AI try-on",
+    tags: ["Next.js", "Medusa", "TypeScript", "PostgreSQL", "AI", "Stripe"],
+    url: "https://github.com/HussamAlraggad/men_fashion_e_commernce_01",
   },
   {
     title: "Fashion Store",
     year: "2026",
-    description: "A luxury fur fashion e-commerce prototype built with Next.js 14, TypeScript, and Tailwind CSS. Features age-gated entry, 30 products across 6 categories, multi-step checkout, admin dashboard, and a complete luxury design system.",
+    description: "A luxury fur fashion e-commerce prototype (Maison Fourrure) built with Next.js 14, TypeScript, and Tailwind CSS. Features 18+ age-gated entry, 30 products across 6 categories, multi-step checkout, admin dashboard, and a complete luxury design system with editorial imagery.",
     outcome: "Full e-commerce prototype with admin panel",
     tags: ["Next.js", "TypeScript", "Tailwind", "E-Commerce"],
     url: "https://maison-furrure.netlify.app/",
+  },
+  {
+    title: "School LMS Template",
+    year: "2026",
+    description: "A bilingual (Arabic/English) school LMS platform for K–12. Features homework management, interactive quizzes, educational materials, news/announcements, exam schedules, and offline access. Built with Next.js 16, PocketBase, TanStack Query, and Tiptap.",
+    outcome: "Full bilingual LMS platform",
+    tags: ["Next.js", "PocketBase", "TypeScript", "Education"],
   },
   {
     title: "OS Geeks Hub",
@@ -32,13 +56,6 @@ const projects: Project[] = [
     outcome: "Live at os-geeks-hub.netlify.app",
     tags: ["Astro", "TypeScript", "Docs"],
     url: "https://os-geeks-hub.netlify.app",
-  },
-  {
-    title: "School LMS Template",
-    year: "2026",
-    description: "A bilingual (Arabic/English) school LMS platform. Features homework management, interactive quizzes, educational materials, news/announcements, and exam schedules. Built with Next.js 16, PocketBase, and TanStack Query.",
-    outcome: "Full bilingual LMS platform",
-    tags: ["Next.js", "PocketBase", "TypeScript", "Education"],
   },
   {
     title: "RAG System",
@@ -50,10 +67,18 @@ const projects: Project[] = [
   {
     title: "Fruit Basket",
     year: "2026",
-    description: "An interactive game for special needs kids that uses webcam-based movement detection to help them move, play, and feel alive. Built with HTML, CSS, JavaScript, and the MediaPipe library.",
+    description: "An interactive game for special needs kids that uses webcam-based movement detection (MediaPipe) to help them move, play, and feel alive. Built with HTML, CSS, JavaScript, and the MediaPipe library.",
     outcome: "Movement therapy through play",
     tags: ["JavaScript", "HTML", "CSS", "MediaPipe"],
     url: "https://hussamalraggad.github.io/fruit_basket_3/",
+  },
+  {
+    title: "Masters Plan Tracker",
+    year: "2026",
+    description: "Personal master's degree plan and progress tracking application.",
+    outcome: "Personal productivity tool",
+    tags: ["TypeScript", "Productivity"],
+    url: "https://github.com/HussamAlraggad/masters_plan_tracker",
   },
 ];
 ---
@@ -64,7 +89,7 @@ const projects: Project[] = [
       <span class="section-label">Selected work</span>
       <h2 class="section-title">Projects</h2>
       <p class="section-desc">
-        Open-source projects, from AI research tools and LLM pipelines to full-stack apps and systems programming.
+        Nine open-source projects — from AI research tools and LLM pipelines to full-stack apps, e-commerce platforms, and systems programming.
       </p>
     </div>
     <div class="projects-grid">
@@ -88,6 +113,9 @@ const projects: Project[] = [
                   <li class="card-tag">{tag}</li>
                 ))}
               </ul>
+            )}
+            {project.archived && (
+              <span class="card-archived" aria-label="Archived project">Archived</span>
             )}
           </Tag>
         );
@@ -194,5 +222,16 @@ const projects: Project[] = [
     background: var(--tag-bg);
     padding: 0.1875rem 0.5rem;
     border-radius: 4px;
+  }
+
+  .card-archived {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--muted);
+    background: var(--tag-bg);
+    padding: 0.125rem 0.375rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 </style>
